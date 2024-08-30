@@ -28,8 +28,8 @@ const Statistics: React.FC<Statictics> = ({ good, neutral, bad, total, average }
         <StatisticLine label='Regular' value={neutral} />
         <StatisticLine label='Malo' value={bad} />
         <StatisticLine label='Total' value={total} />
-        <StatisticLine label='Promedio' value={average} />
-        <StatisticLine label='Porcentaje de votos buenos' value={porcentaje} />
+        <StatisticLine label='Promedio' value={Number(average.toFixed(2))} />
+        <StatisticLine label='Porcentaje de votos buenos' value={Number(porcentaje.toFixed(2)) + ' %' } />
       </tbody>
     </div>
   )

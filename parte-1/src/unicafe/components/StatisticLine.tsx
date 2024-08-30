@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StatisticLine = ({label, value}: {label: string, value: number}) => {
+const StatisticLine = ({label, value}: {label: string, value: number | string}) => {
   return (
     <tr>
       <td className='text-left p-2'>{label}</td>
