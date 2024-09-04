@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Arto Hellas",
-      "number": "1234"
+      "number": "789"
     },
     {
       "name": "Ada Lovelace",
@@ -16,34 +16,24 @@
       "number": "1234"
     },
     {
-      "id": 4,
-      "name": "Dan Abramovsdsad",
-      "number": "1234"
-    },
-    {
-      "id": 4,
-      "name": "sadsa",
-      "number": "213"
-    },
-    {
       "id": 6,
-      "name": "dsada",
-      "number": "ewqe"
+      "name": "Abraham",
+      "number": "12345"
     },
     {
       "id": 7,
       "name": "sad",
-      "number": "21313"
+      "number": "asda"
+    },
+    {
+      "id": 5,
+      "name": "sad",
+      "number": "we23"
     },
     {
       "id": 8,
-      "name": "dasd",
-      "number": "qewq"
-    },
-    {
-      "id": 4,
-      "name": "asd",
-      "number": "eqwe"
+      "name": "hngfh",
+      "number": "12345y"
     }
   ]
 }

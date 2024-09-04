@@ -20,11 +20,9 @@ export const useResource = () => {
         console.log('newItem', newItem);
         
         if (newItem instanceof Error) {
-            return setError(newItem.message)
+            throw new Error(newItem.message)
         }
         const newList = State.add(newItem)
-        console.log('newList', newList);
-        
         setList(newList)
     }
     const erase = async (id: number) => {

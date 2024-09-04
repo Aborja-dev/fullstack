@@ -888,3 +888,14 @@ body > footer {
     text-decoration: underline;
   }
 }
+
+.alert {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 2rem;
+  background-color: #5a6167;
+  text-align: center;
+}

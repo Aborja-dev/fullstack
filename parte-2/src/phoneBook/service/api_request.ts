@@ -19,6 +19,7 @@ export const fetchAdd = async (person: Person): Promise<Person | Error> => {
     
     if (response.status !== 201) {
         return new Error('Error adding person')
+
     } else {
         return await response.json()
     }
