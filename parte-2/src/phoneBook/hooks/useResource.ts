@@ -1,48 +1,49 @@
-import { Person } from './../../types';
 import { useMemo, useState } from "react"
 import { StateManager } from "../service/stateActions"
-import { fetchAdd, fetchDelete, fetchLoad, fetchUpdate } from "../service/api_request"
+import { FetchRequest } from '../../utils/request';
 
-export const useResource = () => {
-    const [list, setList] = useState<Person[]>([])
-    const [error, setError] = useState<string | null>('')
+export const useResource = <T>({baseUrl, resourceUrl}: {baseUrl: string, resourceUrl: string}) => {
+    const [list, setList] = useState<T[]>([])
     const State = useMemo(
-        () => new StateManager<Person>([]),
+        () => new StateManager<T>([]),
+        []
+    )
+    const Request = useMemo(
+        () => new FetchRequest(baseUrl),
         []
     )
     const load = async () => {
-        const data = await fetchLoad()
+        const data = await Request.get().fetch<T[]>(resourceUrl)
+        if (data instanceof Error) {
+            throw new Error(data.message)
+        }
         State.load(data)
         setList(data)
     }
-    const create = async (data: Person) => {
-        const newItem = await fetchAdd(data as Person)
-        console.log('newItem', newItem);
-        
+    const create = async (data: T) => {
+        const newItem = await Request.post(data).fetch<T>(resourceUrl)
         if (newItem instanceof Error) {
             throw new Error(newItem.message)
         }
-        const newList = State.add(newItem)
-        setList(newList)
+        setList(State.add(newItem))
     }
     const erase = async (id: number) => {
-        await fetchDelete(id)
+        await Request.delete().fetch(`${resourceUrl}/${id}`)
         const newList = State.remove(id)
         setList(newList)
     }
-    const update = async (id, updateData) => {
+    const update = async (id: number, updateData: Partial<T>) => {
         const item = State.find(id)
-        await fetchUpdate({
-            id,
-            ...updateData
-        })
+        await Request.patch(updateData).fetch(`${resourceUrl}/${id}`)
+        if (item instanceof Error) {
+            throw new Error(item.message)
+        }
         const itemUpdate = {...item, ...updateData}
-        const newList = State.update(id, itemUpdate) as Person[]
+        const newList = State.update(id, itemUpdate) as T[]
         setList(newList)
     }
     return {
         erase,
-        error,
         update,
         create,
         load,

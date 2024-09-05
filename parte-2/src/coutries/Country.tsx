@@ -23,7 +23,6 @@ interface Country {
 
 const Country = () => {
     const [countries, setCountries] = React.useState<Country[] | null>(null)
-    
     const [state, setState] = React.useState({})
     const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()

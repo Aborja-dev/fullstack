@@ -11,8 +11,6 @@ import Alert from './components/Alert'
 
 const ListWithSearch = WithSearch(List, (person: Person, search: string) => person.name.toLowerCase().includes(search.toLowerCase()))
 
-
-
 const Phonebook = () => {
     const [newName, setNewName] = useState('')
     const [phone, setPhone] = useState('')
@@ -20,7 +18,10 @@ const Phonebook = () => {
         message: null,
         type: 'info'
     })
-    const PersonHook = useResource()
+    const PersonHook = useResource({
+        baseUrl: 'http://localhost:5000',
+        resourceUrl: '/persons'
+    })
     useEffect(() => {
         PersonHook.load()
     }, [])
