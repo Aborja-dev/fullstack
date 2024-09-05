@@ -18,7 +18,7 @@ const Phonebook = () => {
         message: null,
         type: 'info'
     })
-    const PersonHook = useResource({
+    const PersonHook = useResource<Person>({
         baseUrl: 'http://localhost:5000',
         resourceUrl: '/persons'
     })
@@ -95,7 +95,6 @@ const Phonebook = () => {
                     />
                 </Display>
             </div>
-            <pre>debug: {JSON.stringify(PersonHook.error)}</pre>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
 import { StateManager } from "../service/stateActions"
-import { FetchRequest } from '../../utils/request';
+import { FetchRequest } from "../../utils/request"
 
 export const useResource = <T>({baseUrl, resourceUrl}: {baseUrl: string, resourceUrl: string}) => {
     const [list, setList] = useState<T[]>([])
@@ -50,3 +50,4 @@ export const useResource = <T>({baseUrl, resourceUrl}: {baseUrl: string, resourc
         items: list,
      }
 }
+
